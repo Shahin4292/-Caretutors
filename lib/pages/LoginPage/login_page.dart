@@ -103,7 +103,14 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const Text("Don't have an account? "),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegistrationPage()),
+                            (route) => false,
+                      );
+                    },
                     child: const Text(
                       "Register here",
                       style: TextStyle(fontWeight: FontWeight.bold),
