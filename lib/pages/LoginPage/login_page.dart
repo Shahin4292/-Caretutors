@@ -1,20 +1,28 @@
+import 'package:caretutors/pages/RegistrationPage/registration_page.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/custom_button.dart';
-import '../widget/custom_textfield.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(25.0),
-        child: Center(
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+        child: Form(
+          key: formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -35,39 +43,57 @@ class LoginPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              CustomTextField(
-                hintText: "Email",
+              TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 obscureText: false,
                 controller: emailController,
+                decoration: InputDecoration(
+                  hintText: "email",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter email address';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 10,
               ),
-              CustomTextField(
-                hintText: "Password",
+              TextFormField(
                 obscureText: true,
                 controller: passwordController,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
+                decoration: InputDecoration(
+                  hintText: "password",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                ],
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter password';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 20,
               ),
               CustomButton(
                 text: 'Login',
-                onTap: () {},
+                onTap: () {
+                  if (formKey.currentState!.validate()) {
+                    if (emailController.text.trim().isNotEmpty) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RegistrationPage()));
+                    }
+                  }
+                },
               ),
               const SizedBox(
                 height: 20,
@@ -75,7 +101,7 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Don't have an account?"),
+                  const Text("Don't have an account? "),
                   GestureDetector(
                     onTap: () {},
                     child: const Text(
