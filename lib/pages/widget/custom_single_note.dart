@@ -49,10 +49,8 @@ class CustomSingleNote extends StatelessWidget {
                     fontSize: 11,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.delete),
-                ),
+                InkWell(onTap: () {},
+                    child: const Icon(Icons.delete)),
               ],
             ),
           ],

@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColors.backgroundColor
       ),
       getPages: RoutePages.routes,
-      initialRoute: RoutesName.splash,
+      initialRoute: RoutesName.homeScreen,
       // home: const SplashScreen(),
     );
   }
