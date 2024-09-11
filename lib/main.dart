@@ -1,4 +1,7 @@
+import 'package:caretutors/pages/routes/route_pages.dart';
+import 'package:caretutors/pages/routes/routes_name.dart';
 import 'package:caretutors/pages/splash_screen.dart';
+import 'package:caretutors/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -16,8 +19,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        scaffoldBackgroundColor: AppColors.backgroundColor
       ),
-      home: const SplashScreen(),
+      getPages: RoutePages.routes,
+      initialRoute: RoutesName.splash,
+      // home: const SplashScreen(),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:caretutors/pages/widget/custom_single_note.dart';
+import 'package:caretutors/utils/color.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,8 +13,46 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Shahin"),
+      body: Container(
+        color: AppColors.backgroundColor,
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "My Notes",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+                      Row(
+                        children: [
+                          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+                          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+                        ],
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const CustomSingleNote()
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
