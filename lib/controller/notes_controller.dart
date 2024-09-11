@@ -1,9 +1,11 @@
+import 'package:caretutors/models/notes_model.dart';
 import 'package:get/get.dart';
 
 class NotesController extends GetxController {
-  RxList notes = [].obs;
+  RxList<NotesModel> notes = <NotesModel>[].obs;
 
-  addNotes (){
-
+  addNotes (NotesModel notesData){
+    notes.add(notesData);
+    update();
   }
 }

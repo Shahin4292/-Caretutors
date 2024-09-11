@@ -1,3 +1,4 @@
+import 'package:caretutors/controller/notes_controller.dart';
 import 'package:caretutors/pages/routes/routes_name.dart';
 import 'package:caretutors/pages/widget/custom_single_note.dart';
 import 'package:caretutors/utils/color.dart';
@@ -14,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(NotesController());
+
     return Scaffold(
       body: Container(
         color: AppColors.backgroundColor,
@@ -54,25 +57,32 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 20,
                   ),
                   Expanded(
-                      child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        ListView.builder(
-                          shrinkWrap: true,
-                          primary: false,
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            return const CustomSingleNote(
-                              title: 'Hello',
-                              description:
-                                  'sjsjdisjfjsifjsifjsdjfskdfjsjfsdjsdjfsjfsdfjskdfjsdkjfsdjfksdjdfksjfsdkfjieurierutrutriuterut',
-                              date: '12.05 Am',
-                            );
-                          },
-                        )
-                      ],
+                    child: Obx(
+                      () => SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            controller.notes.isEmpty
+                                ? const Center(
+                                    child: Text("No Notes Available!"),
+                                  )
+                                : ListView.builder(
+                                    shrinkWrap: true,
+                                    primary: false,
+                                    itemCount: controller.notes.length,
+                                    itemBuilder: (context, index) {
+                                      return const CustomSingleNote(
+                                        title: 'Hello',
+                                        description:
+                                            'sjsjdisjfjsifjsifjsdjfskdfjsjfsdjsdjfsjfsdfjskdfjsdkjfsdjfksdjdfksjfsdkfjieurierutrutriuterut',
+                                        date: '12.05 Am',
+                                      );
+                                    },
+                                  )
+                          ],
+                        ),
+                      ),
                     ),
-                  ))
+                  )
                 ],
               ),
             ),

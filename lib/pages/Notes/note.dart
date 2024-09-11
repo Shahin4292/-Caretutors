@@ -1,6 +1,9 @@
+import 'package:caretutors/controller/notes_controller.dart';
+import 'package:caretutors/models/notes_model.dart';
 import 'package:caretutors/pages/widget/custom_button.dart';
 import 'package:caretutors/utils/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NoteScreen extends StatefulWidget {
   const NoteScreen({super.key});
@@ -12,6 +15,11 @@ class NoteScreen extends StatefulWidget {
 class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
+    final titleController = TextEditingController();
+    final descriptionController = TextEditingController();
+
+    final controller = Get.put(NotesController());
+
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
@@ -40,10 +48,8 @@ class _NoteScreenState extends State<NoteScreen> {
         child: Column(
           children: [
             TextFormField(
-              style: const TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold
-              ),
+              controller: titleController,
+              style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               minLines: 1,
               maxLines: 2,
               decoration: const InputDecoration(
@@ -51,15 +57,16 @@ class _NoteScreenState extends State<NoteScreen> {
                 border: InputBorder.none,
               ),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Expanded(
               child: TextFormField(
+                controller: descriptionController,
                 maxLines: 20,
                 minLines: 20,
-                style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500
-                ),
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 decoration: const InputDecoration(
                   hintText: 'Description about your notes',
                   border: InputBorder.none,
@@ -69,7 +76,24 @@ class _NoteScreenState extends State<NoteScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomButton(text: 'Save Changes', onTap: () {  },),
+      bottomNavigationBar: CustomButton(
+        text: 'Save Changes',
+        onTap: () {
+          if (titleController.text.isEmpty ||
+              descriptionController.text.isEmpty) {
+            Get.snackbar("Error", "Title and Description is required");
+          } else {
+            controller.addNotes(
+              NotesModel(
+                title: titleController.text,
+                description: descriptionController.text,
+                createdDate: DateTime.now(),
+              ),
+            );
+            Get.back();
+          }
+        },
+      ),
     );
   }
 }
