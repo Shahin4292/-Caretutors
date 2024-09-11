@@ -35,11 +35,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+                      IconButton(
+                          onPressed: () {}, icon: const Icon(Icons.menu)),
                       Row(
                         children: [
-                          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-                          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+                          IconButton(
+                              onPressed: () {}, icon: const Icon(Icons.search)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.more_vert)),
                         ],
                       )
                     ],
@@ -47,7 +51,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const CustomSingleNote()
+                  Expanded(child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        ListView.builder(
+                          shrinkWrap: true,
+                          primary: false,
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return const CustomSingleNote();
+                          },
+                        )
+                      ],
+                    ),
+                  ))
                 ],
               ),
             ),

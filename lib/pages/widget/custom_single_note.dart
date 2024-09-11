@@ -7,6 +7,7 @@ class CustomSingleNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -49,8 +50,7 @@ class CustomSingleNote extends StatelessWidget {
                     fontSize: 11,
                   ),
                 ),
-                InkWell(onTap: () {},
-                    child: const Icon(Icons.delete)),
+                InkWell(onTap: () {}, child: const Icon(Icons.delete)),
               ],
             ),
           ],
