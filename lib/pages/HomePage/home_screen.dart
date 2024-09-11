@@ -1,6 +1,8 @@
+import 'package:caretutors/pages/routes/routes_name.dart';
 import 'package:caretutors/pages/widget/custom_single_note.dart';
 import 'package:caretutors/utils/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -51,7 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Expanded(child: SingleChildScrollView(
+                  Expanded(
+                      child: SingleChildScrollView(
                     child: Column(
                       children: [
                         ListView.builder(
@@ -59,7 +62,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           primary: false,
                           itemCount: 10,
                           itemBuilder: (context, index) {
-                            return const CustomSingleNote();
+                            return const CustomSingleNote(
+                              title: 'Hello',
+                              description:
+                                  'sjsjdisjfjsifjsifjsdjfskdfjsjfsdjsdjfsjfsdfjskdfjsdkjfsdjfksdjdfksjfsdkfjieurierutrutriuterut',
+                              date: '12.05 Am',
+                            );
                           },
                         )
                       ],
@@ -69,6 +77,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.primaryColor,
+        shape: const CircleBorder(),
+        onPressed: () => Get.toNamed(RoutesName.noteScreen),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
         ),
       ),
     );
