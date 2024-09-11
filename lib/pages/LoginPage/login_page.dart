@@ -1,6 +1,7 @@
 import 'package:caretutors/pages/RegistrationPage/registration_page.dart';
 import 'package:flutter/material.dart';
 
+import '../HomePage/home_screen.dart';
 import '../widget/custom_button.dart';
 
 class LoginPage extends StatefulWidget {
@@ -48,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                 obscureText: false,
                 controller: emailController,
                 decoration: InputDecoration(
-                  hintText: "email",
+                  hintText: "Email",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -67,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                 obscureText: true,
                 controller: passwordController,
                 decoration: InputDecoration(
-                  hintText: "password",
+                  hintText: "Password",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -90,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const RegistrationPage()));
+                              builder: (context) => const HomeScreen()));
                     }
                   }
                 },
