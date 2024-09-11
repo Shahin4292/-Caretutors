@@ -69,7 +69,7 @@ class _NoteScreenState extends State<NoteScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomButton(text: 'Save Change', onTap: () {  },),
+      bottomNavigationBar: CustomButton(text: 'Save Changes', onTap: () {  },),
     );
   }
 }
