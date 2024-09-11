@@ -1,8 +1,8 @@
 import 'package:caretutors/pages/RegistrationPage/registration_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../widget/custom_button.dart';
 import '../HomePage/home_screen.dart';
-import '../widget/custom_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

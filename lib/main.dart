@@ -1,6 +1,5 @@
-import 'package:caretutors/pages/routes/route_pages.dart';
-import 'package:caretutors/pages/routes/routes_name.dart';
-import 'package:caretutors/pages/splash_screen.dart';
+import 'package:caretutors/routes/route_pages.dart';
+import 'package:caretutors/routes/routes_name.dart';
 import 'package:caretutors/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';

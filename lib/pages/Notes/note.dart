@@ -1,9 +1,10 @@
 import 'package:caretutors/controller/notes_controller.dart';
 import 'package:caretutors/models/notes_model.dart';
-import 'package:caretutors/pages/widget/custom_button.dart';
 import 'package:caretutors/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../widget/custom_button.dart';
 
 class NoteScreen extends StatefulWidget {
   const NoteScreen({super.key});

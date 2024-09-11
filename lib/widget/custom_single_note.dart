@@ -1,19 +1,24 @@
 import 'package:caretutors/utils/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
+import '../../controller/notes_controller.dart';
 
 class CustomSingleNote extends StatelessWidget {
-  final String title;
-  final String description;
-  final String date;
+  final int index;
 
-  const CustomSingleNote(
-      {super.key,
-      required this.title,
-      required this.description,
-      required this.date});
+  const CustomSingleNote({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(NotesController());
+    final note = controller.notes.elementAt(index);
+
+    // final notes = controller.notes[index];
+    final createDateFormat = DateFormat.yMMMMd().format(note.createdDate);
+    final createTimeFormat = DateFormat.jm().format(note.createdDate);
+
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
@@ -32,7 +37,7 @@ class CustomSingleNote extends StatelessWidget {
               shape: BoxShape.circle, color: AppColors.backgroundColor),
         ),
         title: Text(
-          title,
+          note.title,
           style: const TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 16,
@@ -44,7 +49,7 @@ class CustomSingleNote extends StatelessWidget {
             Text(
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              description,
+              note.description,
               style: TextStyle(color: Colors.black.withOpacity(.5)),
             ),
             const SizedBox(
@@ -54,13 +59,17 @@ class CustomSingleNote extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  date,
+                  '$createDateFormat - $createTimeFormat',
                   style: TextStyle(
                     color: Colors.black.withOpacity(.5),
                     fontSize: 11,
                   ),
                 ),
-                InkWell(onTap: () {}, child: const Icon(Icons.delete)),
+                InkWell(
+                    onTap: () {
+                      controller.deleteNotes(index);
+                    },
+                    child: const Icon(Icons.delete)),
               ],
             ),
           ],

@@ -1,6 +1,6 @@
 import 'package:caretutors/pages/HomePage/home_screen.dart';
 import 'package:caretutors/pages/Notes/note.dart';
-import 'package:caretutors/pages/routes/routes_name.dart';
+import 'package:caretutors/routes/routes_name.dart';
 import 'package:get/get.dart';
 
 class RoutePages {
