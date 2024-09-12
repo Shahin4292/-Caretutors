@@ -25,20 +25,11 @@ class _NoteScreenState extends State<NoteScreen> {
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.link),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.share),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.more_vert),
-          ),
-        ],
+        centerTitle: true,
+        title: const Text(
+          "Add Note",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: AppColors.backgroundColor,
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(1),

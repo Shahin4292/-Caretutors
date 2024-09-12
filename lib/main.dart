@@ -5,10 +5,8 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
-void main() async {
+void main()  {
   WidgetsFlutterBinding.ensureInitialized();
-  final documentDir = await getApplicationDocumentsDirectory();
-  Hive.init(documentDir.path);
   runApp(const MyApp());
 }
 
