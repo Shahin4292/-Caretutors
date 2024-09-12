@@ -35,8 +35,26 @@ class _SplashScreenState extends State<SplashScreen> {
     return const Scaffold(
         backgroundColor: Colors.cyan,
         body: Center(
-          child: Image(image: AssetImage("assets/images/pencil.png")),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 100,
+                width: 100,
+                child: Image(
+                  image: AssetImage("assets/images/pencil.png"),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "Note App",
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+              )
+            ],
+          ),
         ));
   }
 }
-
