@@ -123,14 +123,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 children: [
                   const Text("Have an account? "),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
-                        (route) => false,
-                      );
-                    },
+                    onTap: () => GoRouter.of(context).go('/login_page'),
                     child: const Text(
                       "Login",
                       style: TextStyle(fontWeight: FontWeight.bold),

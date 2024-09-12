@@ -70,7 +70,7 @@ class _NoteScreenState extends State<NoteScreen> {
         ),
       ),
       bottomNavigationBar: CustomButton(
-        text: 'Save Changes',
+        text: 'Save',
         onTap: () {
           if (titleController.text.isEmpty ||
               descriptionController.text.isEmpty) {
