@@ -39,8 +39,8 @@ class _SplashScreenState extends State<SplashScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: 120,
-                width: 120,
+                height: 130,
+                width: 130,
                 child: Image(
                   image: AssetImage("assets/images/task_image.png"),
                 ),
