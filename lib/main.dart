@@ -1,5 +1,4 @@
-import 'package:caretutors/routes/route_pages.dart';
-import 'package:caretutors/routes/routes_name.dart';
+import 'package:caretutors/routes/app_route_pages.dart';
 import 'package:caretutors/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -14,14 +13,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return GetMaterialApp.router(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        scaffoldBackgroundColor: AppColors.backgroundColor
-      ),
-      getPages: RoutePages.routes,
-      initialRoute: RoutesName.homeScreen,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+          scaffoldBackgroundColor: AppColors.backgroundColor),
+      debugShowCheckedModeBanner: false,
+      routeInformationParser: router.routeInformationParser,
+      routerDelegate: router.routerDelegate,
+      routeInformationProvider: router.routeInformationProvider,
       // home: const SplashScreen(),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import 'LoginPage/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,12 +18,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void goToLogin() {
-    Future.delayed(const Duration(seconds: 2)).then((value) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) =>  LoginPage()),
-          (route) => false);
-    });
+    Future.delayed(const Duration(seconds: 1)).then((value) =>
+      GoRouter.of(context).go('/login_page')
+    );
   }
 
   @override

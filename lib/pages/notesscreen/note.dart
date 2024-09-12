@@ -3,6 +3,7 @@ import 'package:caretutors/models/notes_model.dart';
 import 'package:caretutors/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../widget/custom_button.dart';
 
@@ -91,7 +92,7 @@ class _NoteScreenState extends State<NoteScreen> {
                 createdDate: DateTime.now(),
               ),
             );
-            Get.back();
+            GoRouter.of(context).go('/home_screen');
           }
         },
       ),

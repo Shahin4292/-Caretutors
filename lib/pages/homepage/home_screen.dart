@@ -2,8 +2,8 @@ import 'package:caretutors/controller/notes_controller.dart';
 import 'package:caretutors/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../routes/routes_name.dart';
 import '../../widget/custom_single_note.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -44,16 +44,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           children: [
                             ListView.builder(
-                                    shrinkWrap: true,
-                                    reverse: true,
-                                    primary: false,
-                                    itemCount: controller.notes.length,
-                                    itemBuilder: (context, index) {
-                                      return CustomSingleNote(
-                                        index: index,
-                                      );
-                                    },
-                                  )
+                              shrinkWrap: true,
+                              reverse: true,
+                              primary: false,
+                              itemCount: controller.notes.length,
+                              itemBuilder: (context, index) {
+                                return CustomSingleNote(
+                                  index: index,
+                                );
+                              },
+                            )
                           ],
                         ),
                       ),
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.primaryColor,
         shape: const CircleBorder(),
-        onPressed: () => Get.toNamed(RoutesName.noteScreen),
+        onPressed: () => GoRouter.of(context).go('/note_screen'),
         child: const Icon(
           Icons.add,
           color: Colors.white,

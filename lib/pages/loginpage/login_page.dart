@@ -1,5 +1,6 @@
 import 'package:caretutors/pages/RegistrationPage/registration_page.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../widget/custom_button.dart';
 import '../HomePage/home_screen.dart';
@@ -88,10 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     if (emailController.text.trim().isNotEmpty) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
+                      GoRouter.of(context).go('/home_screen');
                     }
                   }
                 },
@@ -104,14 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const Text("Don't have an account? "),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RegistrationPage()),
-                            (route) => false,
-                      );
-                    },
+                    onTap: () => GoRouter.of(context).go('/registration_page'),
                     child: const Text(
                       "Register here",
                       style: TextStyle(fontWeight: FontWeight.bold),
